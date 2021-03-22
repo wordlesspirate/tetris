@@ -1,4 +1,4 @@
-import { Cell } from "./Cell";
+import Cell from "./Cell";
 import { StyledStage } from "./styles/StyledStage";
 
 export const Stage = ({ stage }) => (
