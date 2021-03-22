@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledStartButton = styled.button`
   box-sizing: border-box;
@@ -7,11 +7,11 @@ export const StyledStartButton = styled.button`
   min-height: 30px;
   width: 100%;
   border-radius: 20px;
-  border: none;
-  color: white;
-  background: #333;
+  border: 4px solid #333;
+  color: black;
+  background: white;
   font-family: Pixel, Arial, Helvetica, sans-serif;
   font-size: 1rem;
   outline: none;
   cursor: pointer;
-`
+`;
