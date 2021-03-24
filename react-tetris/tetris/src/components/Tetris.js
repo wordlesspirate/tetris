@@ -8,6 +8,10 @@ import { useGameStatus } from "../hooks/useGameStatus";
 import { Stage } from "./Stage";
 import { Display } from "./Display";
 import { StartButton } from "./StartButton";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { PlayThemeSong } from "./PlayThemeSong";
 
 export const Tetris = () => {
   // speed time depending on level
@@ -92,6 +96,8 @@ export const Tetris = () => {
     drop();
   }, dropTime);
 
+  const goHome = <FontAwesomeIcon icon={faHome} size="3x" />;
+
   return (
     // we are using the wrapper to handle key inputs
     <StyledTetrisWrapper
@@ -100,6 +106,12 @@ export const Tetris = () => {
       onKeyDown={(event) => move(event)}
       onKeyUp={keyUp}
     >
+      <button className="goHome">
+        <Link to={`/`}>Back to {goHome}</Link>
+      </button>
+
+      <PlayThemeSong />
+
       <StyledTetris>
         <Stage stage={stage} />
         <aside>
