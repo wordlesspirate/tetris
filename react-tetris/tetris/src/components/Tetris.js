@@ -67,6 +67,7 @@ export const Tetris = () => {
     console.log('pause?')
     //if true = stop rendering 
     //if false = continue to render
+    //do we also want to have a winner pop up whenever we clear a level? consider it a "win condition
   };
 
   const keyUp = ({ keyCode }) => {
