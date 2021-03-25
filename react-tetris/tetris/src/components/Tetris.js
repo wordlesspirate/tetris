@@ -124,7 +124,7 @@ export const Tetris = () => {
               <Display text={`Level: ${level}`} />
             </div>
           )}
-          <StartButton callback={startGame} />
+          <StartButton callback={startGame} status={gameOver}/>
         </aside>
       </StyledTetris>
     </StyledTetrisWrapper>
