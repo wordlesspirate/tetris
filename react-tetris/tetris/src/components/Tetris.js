@@ -17,6 +17,7 @@ export const Tetris = () => {
   // speed time depending on level
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+  const [pauseGame, setPauseGame] = useState(false);
 
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
@@ -61,6 +62,11 @@ export const Tetris = () => {
       }
       updatePlayerPos({ x: 0, y: 0, collided: true });
     }
+
+    //create a button for pauses ~ on click 
+    console.log('pause?')
+    //if true = stop rendering 
+    //if false = continue to render
   };
 
   const keyUp = ({ keyCode }) => {
@@ -122,6 +128,7 @@ export const Tetris = () => {
               <Display text={`Score: ${score}`} />
               <Display text={`Rows: ${rows}`} />
               <Display text={`Level: ${level}`} />
+              <Display text={`Time: `} />
             </div>
           )}
           <StartButton callback={startGame} status={gameOver}/>
