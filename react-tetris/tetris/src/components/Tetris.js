@@ -17,7 +17,7 @@ export const Tetris = () => {
   // speed time depending on level
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
-  const [pauseGame, setPauseGame] = useState(false);
+  // const [pauseGame, setPauseGame] = useState(false);
 
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
@@ -64,7 +64,7 @@ export const Tetris = () => {
     }
 
     //create a button for pauses ~ on click 
-    console.log('pause?')
+    // console.log('pause?')
     //if true = stop rendering 
     //if false = continue to render
     //do we also want to have a winner pop up whenever we clear a level? consider it a "win condition
