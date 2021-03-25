@@ -3,7 +3,7 @@ import {useState, useEffect, useCallback} from "react";
 export const useTimer = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [reset, setReset] = useState(false); 
+  const [resetTimer, setResetTimer] = useState(false); 
   //const [laps, setLaps] = useState([]); //may not need this
 
   useEffect(() => {
@@ -15,14 +15,14 @@ export const useTimer = () => {
       );
     }
 
-    if(!reset) {
+    if(!resetTimer) {
       setIsRunning(false);
       setElapsedTime(0);
     }
 
     return () => clearInterval(interval)
     
-  }, [isRunning, reset]);
+  }, [isRunning, resetTimer]);
 
-  return [isRunning, setIsRunning, elapsedTime, setElapsedTime, reset, setReset];
+  return [isRunning, setIsRunning, elapsedTime, setElapsedTime, resetTimer, setResetTimer];
 };

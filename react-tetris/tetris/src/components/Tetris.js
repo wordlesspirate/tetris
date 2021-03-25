@@ -5,7 +5,7 @@ import { useInterval } from "../hooks/useInterval";
 import { usePlayer } from "../hooks/usePlayer";
 import { useStage } from "../hooks/useStage";
 import { useGameStatus } from "../hooks/useGameStatus";
-import { useStopWatch } from "../hooks/useTimer";
+import { useTimer } from "../hooks/useTimer";
 import { Stage } from "./Stage";
 import { Display } from "./Display";
 import { StartButton } from "./StartButton";
@@ -19,16 +19,16 @@ export const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
   // const [pauseGame, setPauseGame] = useState(false);
-  // const [isRunning, setIsRunning] = useState(false); 
 
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
     rowsCleared
   );
-  // const [laps, addLap, isRunning, elapsedTime, startTimer, stopTime, resetTimer] = useStopWatch();
+  const [isRunning, setIsRunning, elapsedTime, setElapsedTime, resetTimer, setResetTimer] = useTimer();
 
   console.log("re-render");
+  console.log("timer", isRunning)
 
   const movePlayer = (dir) => {
     if (!checkCollision(player, stage, { x: dir, y: 0 })) {
@@ -132,7 +132,7 @@ export const Tetris = () => {
               <Display text={`Score: ${score}`} />
               <Display text={`Rows: ${rows}`} />
               <Display text={`Level: ${level}`} />
-              <Display text={`Time: `} />
+              <Display text={`Time: `} clock={true}/>
             </div>
           )}
           <StartButton callback={startGame} status={gameOver} watch={true}/>
