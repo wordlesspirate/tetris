@@ -29,7 +29,7 @@ export const useStopWatch = () => {
   const handleReset = () => {
     setIsRunning(false);
     setElapsedTime(0);
-    setLap([]); //may not need this
+    setLaps([]); //may not need this
   };
 
   //may not need this 

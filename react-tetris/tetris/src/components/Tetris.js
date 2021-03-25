@@ -5,6 +5,7 @@ import { useInterval } from "../hooks/useInterval";
 import { usePlayer } from "../hooks/usePlayer";
 import { useStage } from "../hooks/useStage";
 import { useGameStatus } from "../hooks/useGameStatus";
+import { useStopWatch } from "../hooks/useTimer";
 import { Stage } from "./Stage";
 import { Display } from "./Display";
 import { StartButton } from "./StartButton";
