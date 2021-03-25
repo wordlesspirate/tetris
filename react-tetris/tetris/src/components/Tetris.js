@@ -19,12 +19,14 @@ export const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
   // const [pauseGame, setPauseGame] = useState(false);
+  // const [isRunning, setIsRunning] = useState(false); 
 
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
     rowsCleared
   );
+  // const [laps, addLap, isRunning, elapsedTime, startTimer, stopTime, resetTimer] = useStopWatch();
 
   console.log("re-render");
 
@@ -133,7 +135,7 @@ export const Tetris = () => {
               <Display text={`Time: `} />
             </div>
           )}
-          <StartButton callback={startGame} status={gameOver}/>
+          <StartButton callback={startGame} status={gameOver} watch={true}/>
         </aside>
       </StyledTetris>
     </StyledTetrisWrapper>

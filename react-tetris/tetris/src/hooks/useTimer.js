@@ -1,8 +1,10 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 
 export const useTimer = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [reset, setReset] = useState(false); 
+  //const [laps, setLaps] = useState([]); //may not need this
 
   useEffect(() => {
     let interval;
@@ -13,42 +15,14 @@ export const useTimer = () => {
       );
     }
 
+    if(!reset) {
+      setIsRunning(false);
+      setElapsedTime(0);
+    }
+
     return () => clearInterval(interval)
     
-  }, [isRunning]);
+  }, [isRunning, reset]);
 
-  return [isRunning, setIsRunning, elapsedTime, setElapsedTime];
-
-};
-
-export const useStopWatch = () => {
-
-  const [laps, setLaps] = useState([]); //may not need this
-  const [isRunning, setIsRunning, elapsedTime, setElapsedTime] = useTimer();
-
-  const handleReset = () => {
-    setIsRunning(false);
-    setElapsedTime(0);
-    setLaps([]); //may not need this
-  };
-
-  //may not need this 
-  const handleAddLap = () => {
-    const prevTotal = 
-    laps.length > 0 ? laps.reduce((acc, curr) => acc + curr, 0) : 0;
-
-    const currentLap = laps.length > 0 ? elapsedTime - prevTotal : elapsedTime;
-
-    isRunning && setLaps([...laps, currentLap]);
-  };
-
-  return {
-    elapsedTime: elapsedTime.toFixed(1), laps,
-    addLaps: () => handleAddLap(),
-    resetTimer: () => handleReset(),
-    startTime: () => setIsRunning(true),
-    stopTimer: () => setIsRunning(false),
-    isRunning
-  };
-
+  return [isRunning, setIsRunning, elapsedTime, setElapsedTime, reset, setReset];
 };
