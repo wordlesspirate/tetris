@@ -12,6 +12,9 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { PlayThemeSong } from "./PlayThemeSong";
+import { useThemeSong } from "../hooks/useThemeSong";
+import Sound from "react-sound";
+import ThemeSong from "../theme-song/Twister Tetris.mp3";
 
 export const Tetris = () => {
   // speed time depending on level
@@ -23,6 +26,7 @@ export const Tetris = () => {
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
     rowsCleared
   );
+  const [isPlaying, playSong] = useThemeSong(false);
 
   console.log("re-render");
 
@@ -41,6 +45,7 @@ export const Tetris = () => {
     setScore(0);
     setRows(0);
     setLevel(0);
+    playSong();
   };
 
   const drop = () => {
@@ -125,6 +130,13 @@ export const Tetris = () => {
             </div>
           )}
           <StartButton callback={startGame} />
+          <Sound
+            url={ThemeSong}
+            playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
+            // onLoading={handleThemeSongLoading}
+            // onPlaying={handleThemeSongPlaying}
+            // onFinishedPlaying={handleThemeSongFinishedPlaying}
+          />
         </aside>
       </StyledTetris>
     </StyledTetrisWrapper>

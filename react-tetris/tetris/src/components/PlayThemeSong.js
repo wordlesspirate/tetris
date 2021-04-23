@@ -9,6 +9,12 @@ export const PlayThemeSong = (
 ) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  handleThemeSongLoading = () => console.log("loaded song");
+
+  handleThemeSongPlaying = () => console.log("playing song");
+
+  handleThemeSongFinishedPlaying = () => console.log("song finished");
+
   return (
     <div>
       <button onClick={() => setIsPlaying(!isPlaying)}>
